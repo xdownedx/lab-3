@@ -36,11 +36,6 @@ public:
     friend ostream& operator<<(ostream& s, Rib& e);
 };
 
-ostream& operator<<(ostream& s, Rib& e)
-{
-    s << "от: " << e.from << ", до: " << e.to << ", вес: " << e.weight;
-    return s;
-}
 
 
 void PrintMatrix(vector<std::vector<int> >& matrix) {
@@ -253,7 +248,9 @@ int main()
     for (int i = 1; i < treeEdges.size(); i++)
     {
         cout << "\nРебро " << i << " ";
-        cout << treeEdges[i];
+        cout << "от: " << treeEdges[i].weight;
+        cout << ", до: " << treeEdges[i].weight;
+        cout << ", вес: " << treeEdges[i].weight;
     }
 
     vector<vector<int>> mat1 = FromTreeToMat(treeEdges);
