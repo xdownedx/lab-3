@@ -170,9 +170,9 @@ double PowAverage(vector <int> res, int V)
     return result;
 }
 
-vector<Rib> MinOstov(vector<vector<int>> mat, int V)
+vector<Rib> MinOstov(vector<vector<int>> mat, int V, int&curWeight)
 {
-    int curWeight = 0;     //Текущий вес
+    //int curWeight = 0;     //Текущий вес
     vector <int> used(V, 0); //использованные вершины
     vector<Rib> edges;        //рассматриваемые ребра
     vector<Rib> tree_edges;    //ребра в минимальном остове
@@ -218,7 +218,6 @@ vector<Rib> MinOstov(vector<vector<int>> mat, int V)
             }
         }
     }
-    std::cout << "Минимальный вес остовного дерева: " << curWeight << endl;
     return tree_edges;
 }
 
@@ -243,13 +242,15 @@ int main()
     };
 
     cout << "\n\nЛаба 3.1\n\n";
+    int curWeight = 0;
+    vector<Rib> treeEdges = MinOstov(matrix, 13, curWeight);
+    std::cout << "Минимальный вес остовного дерева: " << curWeight << endl;
 
-    vector<Rib> treeEdges = MinOstov(matrix, 13);
     for (int i = 1; i < treeEdges.size(); i++)
     {
         cout << "\nРебро " << i << " ";
-        cout << "от: " << treeEdges[i].weight;
-        cout << ", до: " << treeEdges[i].weight;
+        cout << "от: " << treeEdges[i].from;
+        cout << ", до: " << treeEdges[i].to;
         cout << ", вес: " << treeEdges[i].weight;
     }
 
